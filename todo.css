@@ -1,0 +1,16 @@
+.disabledList{
+    
+    pointer-events:none; 
+    opacity:0.4;        
+
+}
+
+#todoList{
+    border: 7px solid teal;
+    border-radius: 0.5rem;
+}
+#welcome{
+    font-family: cursive;
+    font-weight: bolder;
+    color: yellowgreen;
+}
