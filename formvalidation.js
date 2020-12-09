@@ -26,7 +26,6 @@ const validate=(el,authValue)=>{
         $(`#${el}Error`).removeClass('hidden');
     }
 }
-
 autoLogin()
 
 $('#uname').on('input',(e)=>{validate('uname','admin')});
