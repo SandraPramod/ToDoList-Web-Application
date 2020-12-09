@@ -38,7 +38,6 @@ const redirectAndAuthenticate=()=>{
 }
 const loginAction=(e,callback)=>{
     if(!errorFlags['unameErrFlag'] && !errorFlags['passwordErrFlag']){
-        alert("invalid user credentials");
         e.preventDefault();
         callback();
     }
