@@ -1,7 +1,8 @@
-let currentUser=JSON.parse(window.localStorage.getItem('user'));
-if(!currentUser){
-    window.location='main.html';
-
+let currentUser
+try {
+    currentUser=JSON.parse(window.localStorage.getItem('user'));
+} catch {
+    window.location = 'index.html'
 }
 
 // setting welcome text
@@ -12,12 +13,19 @@ const getList=async ()=>{
     try{
         const res=await axios.get('https://jsonplaceholder.typicode.com/todos');
         const lists=res.data;
-        console.log(lists);
-        let listcontent='';
-        lists.forEach((el,index)=>{
-            listcontent+=`<li class="list-group-item ${el.completed?'disabledList':''} ${index%2?'list-group-item-info':'list-group-item-success'}"> <input type="checkbox" class="checkbox" ${el.completed?' checked':''}/> <label for=""> ${el.title}</label></li>`
+        let listcontent='<tbody>';
+        lists.forEach((el) => {
+            listcontent += `
+                <tr>
+                    <td>${el.userId}</td>
+                    <td>${el.id}</td>
+                    <td>${el.title}</td>
+                    <td>${el.completed ? '<input type="checkbox" class="disabled" checked disabled>' : '<input type="checkbox" class="checkbox">'}</td>
+                </tr>
+            `
         });
-        $('#todoList').html(listcontent);
+        listcontent += '</tbody>'
+        $('#todoList').append(listcontent);
         if(checkedCount){
             checkedCount=0;
         }
@@ -62,7 +70,7 @@ const promiseCall=()=>{
 getList();
 
 $('#todoList').on('change','.checkbox',function(e){
-    if($(this).prop('checked')===true){
+    if($(this).prop('checked')==true){
         console.log('checked');
         checkedCount++; 
         $(this).parent().addClass('active');
@@ -71,9 +79,6 @@ $('#todoList').on('change','.checkbox',function(e){
         checkedCount--;
         console.log('unchecked');
         $(this).parent().removeClass('active');
-    }
-    
+    }   
     promiseCall();
-
-
 });

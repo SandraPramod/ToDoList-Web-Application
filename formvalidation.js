@@ -3,6 +3,14 @@ const errorFlags={
     passwordErrFlag:true
     
 }
+
+const autoLogin = () => {
+    let user = window.localStorage.getItem('user')
+    if (user != 'undefined') {
+        document.location = 'main.html'
+    }
+}
+
 const validate=(el,authValue)=>{
     let flagName=el+"ErrFlag";
     if($(`#${el}`).val()===authValue){
@@ -17,8 +25,10 @@ const validate=(el,authValue)=>{
         $(`#${el}Error`).html(msg);
         $(`#${el}Error`).removeClass('hidden');
     }
-
 }
+
+autoLogin()
+
 $('#uname').on('input',(e)=>{validate('uname','admin')});
 $('#password').on('input',(e)=>{validate('password','12345')});
 

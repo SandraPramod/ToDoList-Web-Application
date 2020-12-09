@@ -19,7 +19,7 @@
               <a class="nav-link" href="todolist.html">ToDoList</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Log Out</a>
+                <a class="nav-link" href="index.html" onclick="window.localStorage.setItem('user', undefined)">Log Out</a>
               </li>
         </div>
       </nav>
@@ -31,5 +31,13 @@ Organize your Day-to-Day work here...
       </P>
       <img src="./logo.png" alt="" id="mainimg">
   <footer id="footer">copyright@2020</footer>
+
+  <script>
+    try {
+      let currentUser=JSON.parse(window.localStorage.getItem('user'));
+    } catch {
+      window.location = 'index.html'
+  }
+  </script>
 </body>
 </html>

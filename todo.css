@@ -1,14 +1,13 @@
-.disabledList{
+.disabled{
     
     pointer-events:none; 
     opacity:0.4;        
 
 }
-
-#todoList{
+/* #todoList{
     border: 7px solid teal;
     border-radius: 0.5rem;
-}
+} */
 #welcome{
     font-family: cursive;
     font-weight: bolder;
