@@ -21,7 +21,7 @@ const validate=(el,authValue)=>{
     }
     else{
         errorFlags[flagName]=true;
-        const msg=`Invalid  ${el} `;
+        alert(`Invalid  ${el} `);
         $(`#${el}Error`).html(msg);
         $(`#${el}Error`).removeClass('hidden');
     }
