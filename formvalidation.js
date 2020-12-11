@@ -4,12 +4,12 @@ const errorFlags={
     
 }
 
-const autoLogin = () => {
+/*const autoLogin = () => {
     let user = window.localStorage.getItem('user')
     if (user != 'undefined') {
         document.location = 'main.html'
     }
-}
+}*/
 
 const validate=(el,authValue)=>{
     let flagName=el+"ErrFlag";
@@ -26,7 +26,7 @@ const validate=(el,authValue)=>{
         $(`#${el}Error`).removeClass('hidden');
     }
 }
-autoLogin()
+//autoLogin()
 
 $('#uname').on('input',(e)=>{validate('uname','admin')});
 $('#password').on('input',(e)=>{validate('password','12345')});
@@ -39,6 +39,9 @@ const loginAction=(e,callback)=>{
     if(!errorFlags['unameErrFlag'] && !errorFlags['passwordErrFlag']){
         e.preventDefault();
         callback();
+    }
+    else{
+        alert("Invalid User Credentials");
     }
 }
 $('#submit').on('click',(e)=>{
